@@ -3,17 +3,19 @@
     "services": "Services",
     "process":  "Process",
     "team":     "Team",
-    "contact":  "Contact"
+    "contact":  "Contact",
+    "portfolio": "Portfolio",
+    "gallery": "Gallery"
   },
   "footer": {
     "rights": "© 2025 FAZO. All rights reserved.",
     "tagline": "Digital Ideas Galaxy",
-    "phone1": "+998 90 123 45 67",
-    "phone2": "+998 91 234 56 78",
+    "phone1": "+998 91 827 00 05",
+    "phone2": "+998 33 000 53 24",
     "ctaText": "Ready to build something remarkable?",
     "ctaButton": "Start a Project",
-    "telegram": "https://t.me/fazo",
-    "instagram": "https://instagram.com/fazo",
+    "telegram": "https://t.me/Oybek_Jalolov",
+    "instagram": "https://www.instagram.com/fanus.agency/",
     "youtube": "https://youtube.com/fazo"
   },
   "hero": {
@@ -117,24 +119,33 @@
   },
   "team": {
     "title":    "The Team",
-    "subtitle": "A focused team of engineers and designers.",
-    "amir": {
-      "name":  "Amir",
-      "role":  "Lead Developer & Co-founder",
-      "quote": "Simplicity is the result of mastering complexity.",
-      "about": "Full-stack engineer specializing in scalable architectures and WebGL experiences."
+    "subtitle": "A professional team of engineers.",
+    "diyorbek": {
+      "name":  "Jalolov Diyorbek",
+      "role":  "CEO & Professional Marketer",
+      "specialty": "Marketing & Strategy",
+      "workplace": "Dorada",
+      "experience": "5+ years",
+      "quote": "Marketing is where art meets data.",
+      "about": "Professional marketer and company founder. Over 5 years of experience in brand strategy, digital marketing and business growth. Currently working at Dorada."
     },
-    "bobur": {
-      "name":  "Bobur",
-      "role":  "Backend Architect",
-      "quote": "Systems that breathe.",
-      "about": "Designs robust API systems, database layers, and cloud infrastructure."
+    "oybek": {
+      "name":  "Jalolov Oybek",
+      "role":  "Flutter & Android Developer",
+      "specialty": "Flutter & Android Native",
+      "workplace": "UzAutoMotors",
+      "experience": "3+ years",
+      "quote": "A mobile app is a world in the user's pocket.",
+      "about": "Mobile developer specializing in Flutter and Android Native technologies. Develops mobile applications at UzAutoMotors. 3+ years of experience."
     },
-    "dilnoza": {
-      "name":  "Dilnoza",
-      "role":  "UX/UI Designer",
-      "quote": "Design is intent made visible.",
-      "about": "Crafts refined user experiences and visual systems that communicate with clarity."
+    "tursunjon": {
+      "name":  "Hamidov Tursunjon",
+      "role":  "Cyber Security & Full-Stack",
+      "specialty": "Cyber Security",
+      "workplace": "FAZO",
+      "experience": "2+ years",
+      "quote": "Security is not a feature, it's a foundation.",
+      "about": "Cybersecurity specialist and full-stack developer. Builds secure systems with React.js and Node.js. Experienced in bug bounty and penetration testing."
     }
   },
   "contact": {
@@ -158,6 +169,45 @@
     "subtext":  "Architecture. Precision. Growth.",
     "button":   "Get Started"
   },
+  "portfolio": {
+    "label": "Portfolio",
+    "title": "Our Work",
+    "subtitle": "Every project is a testament to our approach and quality standards.",
+    "shashlik_house": {
+      "title": "Shashlik House",
+      "description": "Online restaurant menu — built with React and React Native (Expo). Node.js + MongoDB backend. Ordering, menu browsing and admin panel.",
+      "result": "Online orders increased by 200%"
+    },
+    "coffee_fresh": {
+      "title": "Coffee Fresh",
+      "description": "Offline restaurant menu app — built with React Native Expo. No internet required, all data stored locally.",
+      "result": "Offline operation — 100% reliable"
+    },
+    "medhome": {
+      "title": "MedHome",
+      "description": "Online medical services app — book a doctor, get consultations and schedule medical services on a mobile platform.",
+      "result": "Quick access to medical services"
+    },
+    "crm_savdo": {
+      "title": "CRM Savdo Pro",
+      "description": "Warehouse management and sales CRM system — product tracking, sales analytics, customer database and reports.",
+      "result": "Sales process 3x faster"
+    },
+    "bug_bounty": {
+      "title": "Bug Bounty Platform",
+      "description": "Cybersecurity vulnerability discovery and reporting platform — a web system for security researchers.",
+      "result": "Vulnerability detection system"
+    },
+    "uzavtosavdo": {
+      "title": "UzAvtoSavdo",
+      "description": "Automobile trading platform mobile app — browse cars, compare and submit applications.",
+      "result": "Convenient car search system"
+    },
+    "stat1": { "value": "6+", "label": "Completed projects" },
+    "stat2": { "value": "98%", "label": "Client satisfaction" },
+    "stat3": { "value": "10+", "label": "Long-term partners" },
+    "stat4": { "value": "3+", "label": "Years of experience" }
+  },
   "why": {
     "title": "Built for ambitious founders.",
     "items": [
@@ -167,5 +217,58 @@
       { "label": "Transparent communication",    "body": "Structured updates and full technical clarity at every stage." },
       { "label": "Strategic execution",           "body": "Deadlines, milestones, and delivery without hidden surprises." }
     ]
+  },
+  "floating": {
+    "label": "Why Us",
+    "title": "Every pixel has a purpose.",
+    "block1": {
+      "title": "Systematic Approach",
+      "text": "We never start with templates. Every solution is architected from scratch based on your business goals."
+    },
+    "block2": {
+      "title": "Modern Technologies",
+      "text": "React, Next.js, Flutter, Node.js — we work with the latest and most reliable technologies available."
+    },
+    "block3": {
+      "title": "Design System",
+      "text": "Design isn't decoration for us — it's a system that drives user experience. Every element serves a purpose."
+    },
+    "block4": {
+      "title": "Transparent Partnership",
+      "text": "Weekly structured updates, clear milestones, and full technical transparency — you're always informed."
+    },
+    "stat1": { "value": "100%", "label": "Transparent process" },
+    "stat2": { "value": "24/7", "label": "Support available" },
+    "stat3": { "value": "2x", "label": "Faster delivery" },
+    "stat4": { "value": "0", "label": "Hidden fees" }
+  },
+  "gallery": {
+    "label": "Gallery",
+    "title": "A World of Visual Experience",
+    "subtitle": "Every project is a unique visual universe. Our work is felt through the eyes.",
+    "item1": {
+      "title": "Interface Architecture",
+      "category": "UI Design"
+    },
+    "item2": {
+      "title": "Mobile Experiences",
+      "category": "Mobile App"
+    },
+    "item3": {
+      "title": "Dashboard Systems",
+      "category": "Web Platform"
+    },
+    "item4": {
+      "title": "Brand Identity",
+      "category": "Visual Design"
+    },
+    "item5": {
+      "title": "E-commerce Platforms",
+      "category": "Web Store"
+    },
+    "item6": {
+      "title": "Landing Pages",
+      "category": "Marketing"
+    }
   }
 }

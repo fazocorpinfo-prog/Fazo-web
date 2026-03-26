@@ -9,6 +9,7 @@ import { CustomCursor } from "@/components/ui/CustomCursor";
 import { ScrollIndicator } from "@/components/ui/ScrollIndicator";
 import { ContactModalProvider } from "@/contexts/ContactModalContext";
 import { ContactModalHost } from "@/components/providers/ContactModalHost";
+import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 
 type Props = {
   children: React.ReactNode;
@@ -28,6 +29,7 @@ export default async function LocaleLayout({ children, params }: Props) {
   return (
     <NextIntlClientProvider messages={messages}>
       <ContactModalProvider>
+        <SmoothScrollProvider />
         <CustomCursor />
         <ScrollAmbientProvider />
         <ScrollIndicator />

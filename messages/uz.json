@@ -3,17 +3,19 @@
     "services": "Xizmatlar",
     "process":  "Jarayon",
     "team":     "Jamoa",
-    "contact":  "Aloqa"
+    "contact":  "Aloqa",
+    "portfolio": "Portfolio",
+    "gallery": "Galereya"
   },
   "footer": {
     "rights": "© 2025 FAZO. Barcha huquqlar himoyalangan.",
     "tagline": "Raqamli g'oyalar galaktikasi",
-    "phone1": "+998 90 123 45 67",
-    "phone2": "+998 91 234 56 78",
+    "phone1": "+998 91 827 00 05",
+    "phone2": "+998 33 000 53 24",
     "ctaText": "Noyob loyiha qurishga tayyormisiz?",
     "ctaButton": "Loyiha boshlash",
-    "telegram": "https://t.me/fazo",
-    "instagram": "https://instagram.com/fazo",
+    "telegram": "https://t.me/Oybek_Jalolov",
+    "instagram": "https://www.instagram.com/fanus.agency/",
     "youtube": "https://youtube.com/fazo"
   },
   "hero": {
@@ -117,24 +119,33 @@
   },
   "team": {
     "title":    "Jamoa",
-    "subtitle": "Muhandislar va dizaynerlardan iborat jamoa.",
-    "amir": {
-      "name":  "Amir",
-      "role":  "Bosh ishlab chiquvchi va hamtashkilotchi",
-      "quote": "Soddalik murakkablikni egallash natijasidir.",
-      "about": "Kengaytiriladigan arxitektura va WebGL tajribalarida ixtisoslashgan full-stack muhandis."
+    "subtitle": "Professional muhandislar jamoasi.",
+    "diyorbek": {
+      "name":  "Jalolov Diyorbek",
+      "role":  "CEO & Professional Marketolog",
+      "specialty": "Marketing & Strategiya",
+      "workplace": "Dorada",
+      "experience": "5+ yil",
+      "quote": "Marketing — bu san'at va ma'lumotlar birlashmasi.",
+      "about": "Professional marketolog va kompaniya asoschisi. 5 yildan ortiq tajriba bilan brend strategiyasi, raqamli marketing va biznesni o'stirish bo'yicha mutaxassis. Dorada kompaniyasida ishlaydi."
     },
-    "bobur": {
-      "name":  "Bobur",
-      "role":  "Backend Arxitektori",
-      "quote": "Nafas oladigan tizimlar.",
-      "about": "Ishonchli API tizimlari, ma'lumotlar bazasi qatlamlari va bulut infratuzilmalarini loyihalaydi."
+    "oybek": {
+      "name":  "Jalolov Oybek",
+      "role":  "Flutter & Android Developer",
+      "specialty": "Flutter & Android Native",
+      "workplace": "UzAutoMotors",
+      "experience": "3+ yil",
+      "quote": "Mobil ilova — foydalanuvchining cho'ntagidagi dunyo.",
+      "about": "Flutter va Android Native texnologiyalarida ixtisoslashgan mobil dasturchi. UzAutoMotors kompaniyasida mobil ilovalar ishlab chiqadi. 3+ yillik tajriba."
     },
-    "dilnoza": {
-      "name":  "Dilnoza",
-      "role":  "UX/UI Dizayner",
-      "quote": "Dizayn — ko'rinadigan niyat.",
-      "about": "Aniqlik bilan muloqot qiladigan sayqallangan foydalanuvchi tajribalari va vizual tizimlarni yaratadi."
+    "tursunjon": {
+      "name":  "Hamidov Tursunjon",
+      "role":  "Cyber Security & Full-Stack",
+      "specialty": "Cyber Security",
+      "workplace": "FAZO",
+      "experience": "2+ yil",
+      "quote": "Xavfsizlik — bu xususiyat emas, asos.",
+      "about": "Kiberxavfsizlik mutaxassisi va full-stack dasturchi. React.js va Node.js asosida xavfsiz tizimlar yaratadi. Bug bounty va penetration testing tajribasi mavjud."
     }
   },
   "contact": {
@@ -158,6 +169,45 @@
     "subtext":  "Arxitektura. Aniqlik. O'sish.",
     "button":   "Boshlash"
   },
+  "portfolio": {
+    "label": "Portfolio",
+    "title": "Bizning ishlarimiz",
+    "subtitle": "Har bir loyiha — bu bizning yondashuvimiz va sifatimizning isboti.",
+    "shashlik_house": {
+      "title": "Shashlik House",
+      "description": "Onlayn restoran menyusi — React va React Native (Expo) bilan yaratilgan. Node.js + MongoDB backend. Buyurtma berish, menyu ko'rish va admin panel.",
+      "result": "Onlayn buyurtmalar 200% oshdi"
+    },
+    "coffee_fresh": {
+      "title": "Coffee Fresh",
+      "description": "Oflayn restoran menyusi ilovasi — React Native Expo bilan yaratilgan. Internet talab qilmaydi, barcha ma'lumotlar lokal saqlanadi.",
+      "result": "Oflayn ishlash — 100% barqaror"
+    },
+    "medhome": {
+      "title": "MedHome",
+      "description": "Onlayn tibbiy xizmatlar ilovasi — shifokor chaqirish, maslahat olish va tibbiy xizmatlarni bron qilish mobil platformasi.",
+      "result": "Tibbiy xizmatga tez ulanish"
+    },
+    "crm_savdo": {
+      "title": "CRM Savdo Pro",
+      "description": "Sklad boshqaruvi va savdo CRM tizimi — mahsulot hisobi, sotuvlar tahlili, mijozlar bazasi va hisobotlar.",
+      "result": "Savdo jarayoni 3x tezlashdi"
+    },
+    "bug_bounty": {
+      "title": "Bug Bounty Platform",
+      "description": "Kiberxavfsizlik zaifliklarini topish va xabar berish platformasi — xavfsizlik tadqiqotchilari uchun web tizim.",
+      "result": "Xavfsizlik zaifliklarini aniqlash"
+    },
+    "uzavtosavdo": {
+      "title": "UzAvtoSavdo",
+      "description": "Avtomobil savdo platformasi mobil ilovasi — avtomobillarni ko'rish, solishtirish va ariza berish imkoniyati.",
+      "result": "Qulay avtomobil qidiruv tizimi"
+    },
+    "stat1": { "value": "6+", "label": "Tugatilgan loyihalar" },
+    "stat2": { "value": "98%", "label": "Mijozlar mamnuniyati" },
+    "stat3": { "value": "10+", "label": "Doimiy hamkorlar" },
+    "stat4": { "value": "3+", "label": "Yillik tajriba" }
+  },
   "why": {
     "title": "Ambitsiyali asoschilarga mo'ljallangan.",
     "items": [
@@ -167,5 +217,58 @@
       { "label": "Shaffof muloqot",                  "body": "Har bosqichda tizimli yangilanishlar va texnik aniqlik." },
       { "label": "Strategik ijro",                   "body": "Muddatlar, bosqichlar va yashirin kutilmovchi holatlarsiz yetkazib berish." }
     ]
+  },
+  "floating": {
+    "label": "Nima uchun biz",
+    "title": "Har bir piksel ortida maqsad bor.",
+    "block1": {
+      "title": "Tizimli yondashuv",
+      "text": "Biz loyihani shablon bilan boshlamaymiz. Har bir yechim biznes maqsadlaringiz asosida noldan arxitektura qilinadi."
+    },
+    "block2": {
+      "title": "Zamonaviy texnologiyalar",
+      "text": "React, Next.js, Flutter, Node.js — biz eng so'nggi va ishonchli texnologiyalar bilan ishlaymiz."
+    },
+    "block3": {
+      "title": "Dizayn tizimi",
+      "text": "Dizayn bizda bezak emas — bu foydalanuvchi tajribasini boshqaradigan tizim. Har bir element maqsadga xizmat qiladi."
+    },
+    "block4": {
+      "title": "Shaffof hamkorlik",
+      "text": "Har hafta tizimli yangilanishlar, aniq bosqichlar va to'liq texnik shaffoflik — siz doim jarayondan xabardorsiz."
+    },
+    "stat1": { "value": "100%", "label": "Shaffof jarayon" },
+    "stat2": { "value": "24/7", "label": "Qo'llab-quvvatlash" },
+    "stat3": { "value": "2x", "label": "Tezroq yetkazish" },
+    "stat4": { "value": "0", "label": "Yashirin to'lovlar" }
+  },
+  "gallery": {
+    "label": "Galereya",
+    "title": "Vizual tajriba dunyosi",
+    "subtitle": "Har bir loyiha — bu noyob vizual dunyo. Bizning ishlarimiz ko'z bilan his qilinadi.",
+    "item1": {
+      "title": "Interfeys arxitekturasi",
+      "category": "UI Dizayn"
+    },
+    "item2": {
+      "title": "Mobil tajribalar",
+      "category": "Mobil ilova"
+    },
+    "item3": {
+      "title": "Dashboard tizimlari",
+      "category": "Web platforma"
+    },
+    "item4": {
+      "title": "Brend identifikatsiyasi",
+      "category": "Vizual dizayn"
+    },
+    "item5": {
+      "title": "E-commerce platformalar",
+      "category": "Web do'kon"
+    },
+    "item6": {
+      "title": "Landing sahifalar",
+      "category": "Marketing"
+    }
   }
 }

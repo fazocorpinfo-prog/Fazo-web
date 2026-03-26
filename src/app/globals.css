@@ -37,7 +37,7 @@
 
 /* ─── Base ──────────────────────────────────────────────── */
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+html { scroll-padding-top: 96px; }
 
 body {
   font-family: var(--font-inter), sans-serif;
@@ -124,6 +124,8 @@ body {
 /* ─── Utilities ──────────────────────────────────────────── */
 @layer utilities {
   .text-balance { text-wrap: balance; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
   .gradient-text {
     background-clip: text;
     -webkit-background-clip: text;
@@ -330,9 +332,185 @@ body::after {
   50% { opacity: 1; transform: scale(1.18); }
 }
 
+/* ─── Premium animated gradient border ────────────────────── */
+@property --gradient-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+.animated-border {
+  --gradient-angle: 0deg;
+  border: 1px solid transparent;
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  background-image:
+    linear-gradient(var(--bg-primary), var(--bg-primary)),
+    conic-gradient(from var(--gradient-angle), transparent 25%, var(--accent-cyan) 50%, var(--accent-blue) 75%, transparent 100%);
+  animation: borderSpin 4s linear infinite;
+}
+@keyframes borderSpin {
+  to { --gradient-angle: 360deg; }
+}
+
+/* ─── Shimmer sweep (buttons, cards on hover) ─────────────── */
+@keyframes shimmer {
+  0%   { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
+}
+.shimmer-on-hover { position: relative; overflow: hidden; }
+.shimmer-on-hover::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 40%, rgba(255,255,255,0.12) 50%, rgba(255,255,255,0.06) 60%, transparent 100%);
+  transform: translateX(-100%) skewX(-15deg);
+  pointer-events: none; z-index: 1;
+}
+.shimmer-on-hover:hover::before {
+  animation: shimmer 1.2s ease-in-out;
+}
+
+/* ─── Clip-path section reveal ────────────────────────────── */
+@keyframes clipRevealUp {
+  from { clip-path: inset(100% 0 0 0); opacity: 0; }
+  to   { clip-path: inset(0 0 0 0); opacity: 1; }
+}
+@keyframes clipRevealLeft {
+  from { clip-path: inset(0 100% 0 0); opacity: 0; }
+  to   { clip-path: inset(0 0 0 0); opacity: 1; }
+}
+
+/* ─── Horizontal line sweep ───────────────────────────────── */
+@keyframes lineSweep {
+  0%   { transform: scaleX(0); opacity: 0; }
+  50%  { opacity: 1; }
+  100% { transform: scaleX(1); opacity: 1; }
+}
+.line-sweep {
+  transform-origin: left center;
+  animation: lineSweep 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ─── Glow pulse for accent elements ─────────────────────── */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(0,194,255,0.15), 0 0 60px rgba(0,194,255,0.05); }
+  50%      { box-shadow: 0 0 30px rgba(0,194,255,0.25), 0 0 80px rgba(0,194,255,0.1); }
+}
+.glow-pulse { animation: glowPulse 3s ease-in-out infinite; }
+
+/* ─── Stagger scale reveal for grid children ──────────────── */
+@keyframes staggerReveal {
+  from { opacity: 0; transform: scale(0.88) translateY(30px); filter: blur(6px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+}
+
+/* ─── Text mask reveal ────────────────────────────────────── */
+@keyframes textMaskReveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0 0 0); }
+}
+.text-mask-reveal {
+  animation: textMaskReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* ─── Float animation for decorative elements ─────────────── */
+@keyframes floatY {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+.float-y { animation: floatY 6s ease-in-out infinite; }
+
+/* ─── GPU acceleration hints ──────────────────────────────── */
+.gpu-accelerated {
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* ─── Smooth section entrance (used with IntersectionObserver) */
+.section-enter {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4,0,0.2,1), transform 0.8s cubic-bezier(0.4,0,0.2,1);
+}
+.section-enter.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Premium glass card hover with animated border ──────── */
+.glass-card-premium {
+  @apply backdrop-blur-md rounded-2xl;
+  background: var(--surface);
+  border: 1px solid var(--border-subtle);
+  box-shadow:
+    0 2px 24px rgba(0,0,0,0.22),
+    0 0 0 1px var(--border-subtle);
+  transition:
+    transform    0.5s cubic-bezier(0.4,0,0.2,1),
+    border-color 0.5s cubic-bezier(0.4,0,0.2,1),
+    box-shadow   0.5s cubic-bezier(0.4,0,0.2,1),
+    background   0.5s cubic-bezier(0.4,0,0.2,1);
+  position: relative;
+  overflow: hidden;
+}
+.glass-card-premium::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: conic-gradient(from var(--gradient-angle, 0deg), transparent 40%, var(--accent-cyan) 50%, var(--accent-blue) 60%, transparent 70%);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.4,0,0.2,1);
+  pointer-events: none;
+}
+.glass-card-premium:hover {
+  transform: translateY(-6px);
+  border-color: transparent;
+  box-shadow:
+    0 8px 40px var(--glow),
+    0 2px 24px rgba(0,0,0,0.28);
+  background: var(--surface-hover);
+}
+.glass-card-premium:hover::after {
+  opacity: 1;
+  animation: borderSpin 3s linear infinite;
+}
+
+/* ─── Scroll line indicator animation ─────────────────────── */
+@keyframes scrollLine {
+  0% { transform: translateY(-100%); opacity: 0; }
+  30% { opacity: 1; }
+  70% { opacity: 1; }
+  100% { transform: translateY(100%); opacity: 0; }
+}
+.animate-scroll-line {
+  animation: scrollLine 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* ─── Horizontal scroll sections ──────────────────────────── */
+.horizontal-scroll-section {
+  overflow: hidden;
+}
+
+/* ─── Enhanced glass card interactions ─────────────────────── */
+.glass-card-premium,
+.glass-card {
+  transform-style: preserve-3d;
+}
+
+/* ─── Text character animations ───────────────────────────── */
+[class*="-char"] {
+  will-change: transform, opacity;
+}
+
 /* ─── Reduced motion ─────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
-  *, .marquee-animate {
+  *, .marquee-animate, .animated-border, .shimmer-on-hover::before,
+  .glow-pulse, .float-y, .glass-card-premium::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import Image from 'next/image'
 
-const NAV_LINKS = ['services', 'process', 'team', 'contact'] as const
+const NAV_LINKS = ['services', 'portfolio', 'process', 'team', 'contact'] as const
 
 export function Header() {
 	const t = useTranslations('nav')

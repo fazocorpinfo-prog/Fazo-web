@@ -10,15 +10,24 @@ export function CustomCursor() {
     if (isCoarse) return;
 
     let mx = -100, my = -100, ox = -100, oy = -100, raf = 0;
+    let isMoving = false;
+    let moveTimeout: ReturnType<typeof setTimeout>;
+    let isHidden = false;
     const T = 0.12;
     const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
 
-    // Magnetic target — offset the outer ring toward this element's center
     let magTargetX = 0, magTargetY = 0, isMagnetic = false;
 
-    const onMove = (e: MouseEvent) => { mx = e.clientX; my = e.clientY; };
+    const onMove = (e: MouseEvent) => {
+      mx = e.clientX; my = e.clientY;
+      if (!isMoving) {
+        isMoving = true;
+        if (!isHidden) raf = requestAnimationFrame(tick);
+      }
+      clearTimeout(moveTimeout);
+      moveTimeout = setTimeout(() => { isMoving = false; }, 100);
+    };
 
-    // Buttons: scale 1.2, magnetic
     const onButtonEnter = (e: MouseEvent) => {
       const el = e.currentTarget as HTMLElement;
       outerRef.current?.classList.add("button-hover");
@@ -28,7 +37,6 @@ export function CustomCursor() {
       magTargetY = rect.top  + rect.height / 2;
       isMagnetic = true;
     };
-    // Links, inputs, etc: scale 1.5, magnetic
     const onInteractiveEnter = (e: MouseEvent) => {
       const el = e.currentTarget as HTMLElement;
       outerRef.current?.classList.add("hovered");
@@ -43,7 +51,6 @@ export function CustomCursor() {
       isMagnetic = false;
     };
 
-    // Text-element detection (headings, paragraphs)
     const onTextEnter = () => {
       if (!outerRef.current?.classList.contains("hovered") && !outerRef.current?.classList.contains("button-hover")) {
         outerRef.current?.classList.add("text-hover");
@@ -51,13 +58,19 @@ export function CustomCursor() {
     };
     const onTextLeave = () => outerRef.current?.classList.remove("text-hover");
 
-    // Text selection — shrink cursor when selection exists
     const onSelectionChange = () => {
       const sel = window.getSelection?.();
       const hasSelection = sel && sel.toString().trim().length > 0;
       outerRef.current?.classList.toggle("selecting", !!hasSelection);
       dotRef.current?.classList.toggle("selecting", !!hasSelection);
     };
+
+    // Pause when tab hidden
+    const onVisibility = () => {
+      isHidden = document.hidden;
+      if (!isHidden && isMoving) raf = requestAnimationFrame(tick);
+    };
+    document.addEventListener("visibilitychange", onVisibility);
 
     const buttons = Array.from(document.querySelectorAll("button, [role=button]"));
     const otherInteractive = Array.from(document.querySelectorAll("a:not(button):not([role=button]), input, select, textarea"));
@@ -78,10 +91,10 @@ export function CustomCursor() {
     document.addEventListener("selectionchange", onSelectionChange);
 
     function tick() {
-      // Lerp outer ring
+      if (isHidden) return;
+
       let targetOX = mx, targetOY = my;
       if (isMagnetic) {
-        // Apply a slight pull toward element center (max 6px)
         const dx = magTargetX - mx;
         const dy = magTargetY - my;
         const dist = Math.sqrt(dx * dx + dy * dy);
@@ -99,9 +112,12 @@ export function CustomCursor() {
       if (outer) { outer.style.left = `${ox}px`; outer.style.top = `${oy}px`; }
       if (dot)   { dot.style.left   = `${mx}px`; dot.style.top   = `${my}px`; }
 
-      raf = requestAnimationFrame(tick);
+      // Only continue RAF if still converging
+      const converged = Math.abs(ox - targetOX) < 0.5 && Math.abs(oy - targetOY) < 0.5;
+      if (isMoving || !converged) {
+        raf = requestAnimationFrame(tick);
+      }
     }
-    raf = requestAnimationFrame(tick);
 
     document.addEventListener("mousemove", onMove);
     document.documentElement.style.cursor = "none";
@@ -109,6 +125,8 @@ export function CustomCursor() {
     return () => {
       document.removeEventListener("mousemove", onMove);
       document.removeEventListener("selectionchange", onSelectionChange);
+      document.removeEventListener("visibilitychange", onVisibility);
+      clearTimeout(moveTimeout);
       buttons.forEach((el) => {
         el.removeEventListener("mouseenter", onButtonEnter as EventListener);
         el.removeEventListener("mouseleave", onLeave);
