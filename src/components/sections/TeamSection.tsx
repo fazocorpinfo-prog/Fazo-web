@@ -2,13 +2,14 @@
 import { useRef, useCallback, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { usePointerCapable } from "@/hooks/usePointerCapable";
-import { Megaphone, Smartphone, ShieldCheck } from "lucide-react";
+import { Megaphone, Smartphone, ShieldCheck, Code2 } from "lucide-react";
 import { useGSAPScrollTrigger } from "@/hooks/useGSAP";
 
 const TEAM = [
   { key: "diyorbek", initial: "JD", Icon: Megaphone, color: "#00C2FF" },
   { key: "oybek", initial: "JO", Icon: Smartphone, color: "#7B61FF" },
   { key: "tursunjon", initial: "HT", Icon: ShieldCheck, color: "#00FF88" },
+  { key: "muhammadali", initial: "JM", Icon: Code2, color: "#FFD700" },
 ] as const;
 
 function MemberCard({

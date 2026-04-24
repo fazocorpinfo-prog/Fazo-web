@@ -146,6 +146,15 @@
       "experience": "2+ years",
       "quote": "Security is not a feature, it's a foundation.",
       "about": "Cybersecurity specialist and full-stack developer. Builds secure systems with React.js and Node.js. Experienced in bug bounty and penetration testing."
+    },
+    "muhammadali": {
+      "name":  "Jalilov Muhammad Ali",
+      "role":  "Consigliere",
+      "specialty": "Consigliere — Django",
+      "workplace": "FAZO",
+      "experience": "2+ years",
+      "quote": "Nothing is true, everything is permitted.",
+      "about": "Full-stack developer working in Django. Builds backend architecture, REST APIs, database design, authentication, admin panels and frontend integration."
     }
   },
   "contact": {

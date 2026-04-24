@@ -146,6 +146,15 @@
       "experience": "2+ yil",
       "quote": "Xavfsizlik — bu xususiyat emas, asos.",
       "about": "Kiberxavfsizlik mutaxassisi va full-stack dasturchi. React.js va Node.js asosida xavfsiz tizimlar yaratadi. Bug bounty va penetration testing tajribasi mavjud."
+    },
+    "muhammadali": {
+      "name":  "Jalilov Muhammad Ali",
+      "role":  "Consigliere",
+      "specialty": "Consigliere — Django",
+      "workplace": "FAZO",
+      "experience": "2+ yil",
+      "quote": "Hech narsa haqiqat emas, hamma narsa mumkin.",
+      "about": "Django asosida full-stack dasturchi. Backend arxitekturasi, REST API, ma'lumotlar bazasi dizayni, autentifikatsiya, admin panellar va frontend integratsiyasi sohalarida ishlaydi."
     }
   },
   "contact": {
