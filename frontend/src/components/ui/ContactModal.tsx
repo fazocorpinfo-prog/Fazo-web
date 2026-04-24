@@ -52,9 +52,10 @@ export function ContactModal() {
     return Object.keys(nextErrors).length === 0;
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!validate()) return;
+    const honeypot = String(new FormData(e.currentTarget).get("website") ?? "");
     setStatus("loading");
     try {
       const res = await fetch("/api/contact", {
@@ -65,6 +66,7 @@ export function ContactModal() {
           phone: stripPhone(form.phone),
           message: form.message.trim(),
           service: "quick-contact",
+          website: honeypot,
         }),
       });
       if (!res.ok) throw new Error("Request failed");
@@ -121,6 +123,14 @@ export function ContactModal() {
             <p className="mt-2 text-sm text-[var(--text-secondary)]">{tContact("trustLine")}</p>
 
             <form className="mt-5 space-y-4" onSubmit={handleSubmit} noValidate>
+              <input
+                type="text"
+                name="website"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0, pointerEvents: "none" }}
+              />
               <CosmicInput
                 id="modal-name"
                 label={tContact("name")}

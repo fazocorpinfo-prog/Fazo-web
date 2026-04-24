@@ -1,7 +1,10 @@
+import csv
+import io
+from datetime import datetime
 from pathlib import Path
 
 from fastapi import APIRouter, Depends, Form, HTTPException, Query, Request, status
-from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.responses import HTMLResponse, RedirectResponse, StreamingResponse
 from fastapi.templating import Jinja2Templates
 from sqlalchemy import select
 from sqlalchemy.orm import Session
@@ -9,10 +12,12 @@ from sqlalchemy.orm import Session
 from app.config import settings
 from app.database import get_db
 from app.deps import get_optional_user
+from app.models.audit import AuditLog
 from app.models.contact import Contact, ContactStatus
 from app.models.user import User
 from app.security import create_access_token, verify_password
 from app.services.analytics import dashboard_payload
+from app.services.audit import log_event
 
 BASE = Path(__file__).parent
 templates = Jinja2Templates(directory=str(BASE / "templates"))
@@ -51,6 +56,13 @@ def login_submit(
 ):
     user = db.query(User).filter(User.username == username).one_or_none()
     if not user or not verify_password(password, user.hashed_password) or not user.is_active:
+        log_event(
+            db, "login.failed",
+            actor_username=username,
+            target_type="user",
+            meta={"reason": "invalid_credentials_or_inactive"},
+            request=request,
+        )
         return templates.TemplateResponse(
             request,
             "login.html",
@@ -61,6 +73,12 @@ def login_submit(
             status_code=status.HTTP_401_UNAUTHORIZED,
         )
 
+    log_event(
+        db, "login.success",
+        actor_id=user.id, actor_username=user.username,
+        target_type="user", target_id=user.id,
+        request=request,
+    )
     token = create_access_token(user.username)
     response = RedirectResponse(url="/admin/dashboard", status_code=status.HTTP_303_SEE_OTHER)
     response.set_cookie(
@@ -76,7 +94,18 @@ def login_submit(
 
 
 @router.post("/logout")
-def logout():
+def logout(
+    request: Request,
+    db: Session = Depends(get_db),
+    user: User | None = Depends(get_optional_user),
+):
+    if user:
+        log_event(
+            db, "logout",
+            actor_id=user.id, actor_username=user.username,
+            target_type="user", target_id=user.id,
+            request=request,
+        )
     response = RedirectResponse(url="/admin/login", status_code=status.HTTP_303_SEE_OTHER)
     response.delete_cookie("access_token", path="/")
     return response
@@ -151,6 +180,73 @@ def contacts_page(
     )
 
 
+@router.get("/contacts/export.csv")
+def export_contacts_csv(
+    q: str | None = None,
+    status_filter: str | None = Query(default=None, alias="status"),
+    user: User | None = Depends(get_optional_user),
+    db: Session = Depends(get_db),
+):
+    redirect = _require_user_redirect(user)
+    if redirect:
+        return redirect
+
+    stmt = select(Contact)
+    if q:
+        like = f"%{q.lower()}%"
+        stmt = stmt.where(
+            (Contact.name.ilike(like))
+            | (Contact.phone.ilike(like))
+            | (Contact.service.ilike(like))
+            | (Contact.message.ilike(like))
+        )
+    if status_filter:
+        try:
+            stmt = stmt.where(Contact.status == ContactStatus(status_filter))
+        except ValueError:
+            pass
+    stmt = stmt.order_by(Contact.created_at.desc())
+    contacts = db.execute(stmt).scalars().all()
+
+    def generate():
+        buffer = io.StringIO()
+        writer = csv.writer(buffer, quoting=csv.QUOTE_MINIMAL)
+        writer.writerow([
+            "id", "name", "phone", "service", "status", "source",
+            "message", "notes", "ip_address", "user_agent", "created_at", "updated_at",
+        ])
+        yield buffer.getvalue()
+        buffer.seek(0); buffer.truncate(0)
+
+        for c in contacts:
+            writer.writerow([
+                c.id,
+                c.name,
+                c.phone,
+                c.service,
+                c.status.value,
+                c.source or "",
+                (c.message or "").replace("\r\n", " ").replace("\n", " "),
+                (c.notes or "").replace("\r\n", " ").replace("\n", " "),
+                c.ip_address or "",
+                (c.user_agent or "")[:180],
+                c.created_at.isoformat(),
+                c.updated_at.isoformat(),
+            ])
+            yield buffer.getvalue()
+            buffer.seek(0); buffer.truncate(0)
+
+    filename = f"fazo-contacts-{datetime.utcnow().strftime('%Y%m%d-%H%M')}.csv"
+    return StreamingResponse(
+        generate(),
+        media_type="text/csv; charset=utf-8",
+        headers={
+            "Content-Disposition": f'attachment; filename="{filename}"',
+            "Cache-Control": "no-store",
+        },
+    )
+
+
 @router.get("/contacts/{contact_id}", response_class=HTMLResponse)
 def contact_detail(
     contact_id: int,
@@ -181,6 +277,7 @@ def contact_detail(
 @router.post("/contacts/{contact_id}")
 def contact_update(
     contact_id: int,
+    request: Request,
     status_value: str = Form(..., alias="status"),
     notes: str = Form(""),
     db: Session = Depends(get_db),
@@ -193,18 +290,27 @@ def contact_update(
     contact = db.get(Contact, contact_id)
     if not contact:
         raise HTTPException(status_code=404, detail="Contact not found")
+    previous_status = contact.status.value
     try:
         contact.status = ContactStatus(status_value)
     except ValueError:
         pass
     contact.notes = notes or None
     db.commit()
+    log_event(
+        db, "contact.update",
+        actor_id=user.id, actor_username=user.username,
+        target_type="contact", target_id=contact.id,
+        meta={"from": previous_status, "to": contact.status.value},
+        request=request,
+    )
     return RedirectResponse(url=f"/admin/contacts/{contact_id}", status_code=303)
 
 
 @router.post("/contacts/{contact_id}/delete")
 def contact_delete(
     contact_id: int,
+    request: Request,
     db: Session = Depends(get_db),
     user: User | None = Depends(get_optional_user),
 ):
@@ -214,8 +320,16 @@ def contact_delete(
 
     contact = db.get(Contact, contact_id)
     if contact:
+        snapshot = {"name": contact.name, "phone": contact.phone, "service": contact.service}
         db.delete(contact)
         db.commit()
+        log_event(
+            db, "contact.delete",
+            actor_id=user.id, actor_username=user.username,
+            target_type="contact", target_id=contact_id,
+            meta=snapshot,
+            request=request,
+        )
     return RedirectResponse(url="/admin/contacts", status_code=303)
 
 
@@ -240,6 +354,40 @@ def analytics_page(
             "active": "analytics",
             "days": days,
             "data": data,
+        },
+    )
+
+
+@router.get("/audit", response_class=HTMLResponse)
+def audit_page(
+    request: Request,
+    action: str | None = None,
+    user: User | None = Depends(get_optional_user),
+    db: Session = Depends(get_db),
+):
+    redirect = _require_user_redirect(user)
+    if redirect:
+        return redirect
+
+    stmt = select(AuditLog).order_by(AuditLog.created_at.desc()).limit(200)
+    if action:
+        stmt = select(AuditLog).where(AuditLog.action == action).order_by(AuditLog.created_at.desc()).limit(200)
+    entries = db.execute(stmt).scalars().all()
+
+    actions = db.execute(
+        select(AuditLog.action).group_by(AuditLog.action).order_by(AuditLog.action)
+    ).scalars().all()
+
+    return templates.TemplateResponse(
+        request,
+        "audit.html",
+        {
+            "app_name": settings.app_name,
+            "user": user,
+            "active": "audit",
+            "entries": entries,
+            "actions": actions,
+            "filter_action": action or "",
         },
     )
 
@@ -291,6 +439,12 @@ def change_password_submit(
     else:
         user.hashed_password = hash_password(new_password)
         db.commit()
+        log_event(
+            db, "password.change",
+            actor_id=user.id, actor_username=user.username,
+            target_type="user", target_id=user.id,
+            request=request,
+        )
         message = "Parol muvaffaqiyatli yangilandi"
 
     return templates.TemplateResponse(

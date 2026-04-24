@@ -1,9 +1,17 @@
 <!DOCTYPE html>
-<html lang="uz">
+<html lang="uz" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Kirish · {{ app_name }}</title>
+  <script>
+    (function () {
+      try {
+        var m = document.cookie.match(/(?:^|;\s*)admin_theme=(dark|light)/);
+        if (m && m[1]) document.documentElement.setAttribute("data-theme", m[1]);
+      } catch (e) {}
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link

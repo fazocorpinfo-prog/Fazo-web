@@ -58,9 +58,11 @@ export function ContactSection() {
     return Object.keys(nextErrors).length === 0;
   };
 
-  const onSubmit = async (event: React.FormEvent) => {
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!validate()) return;
+
+    const honeypot = String(new FormData(event.currentTarget).get("website") ?? "");
 
     setStatus("loading");
     try {
@@ -72,6 +74,7 @@ export function ContactSection() {
           name: form.name.trim(),
           message: form.message.trim(),
           phone: stripPhone(form.phone),
+          website: honeypot,
         }),
       });
 
@@ -143,6 +146,14 @@ export function ContactSection() {
           className="contact-form glass-card-premium mt-12 space-y-5 p-8 md:p-10"
           noValidate
         >
+          <input
+            type="text"
+            name="website"
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            style={{ position: "absolute", left: "-9999px", width: 1, height: 1, opacity: 0, pointerEvents: "none" }}
+          />
           <CosmicInput
             id="contact-name"
             label={t("name")}

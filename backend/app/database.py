@@ -22,6 +22,6 @@ def get_db():
 
 
 def init_db() -> None:
-    from app.models import analytics, contact, user  # noqa: F401
+    from app.models import analytics, audit, contact, user  # noqa: F401
 
     Base.metadata.create_all(bind=engine)

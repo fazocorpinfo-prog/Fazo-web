@@ -12,6 +12,7 @@ class ContactCreate(BaseModel):
     service: str = Field(min_length=1, max_length=200)
     message: Optional[str] = Field(default=None, max_length=4000)
     source: Optional[str] = Field(default=None, max_length=100)
+    website: Optional[str] = Field(default=None, max_length=500)  # honeypot — must be empty
 
 
 class ContactUpdate(BaseModel):

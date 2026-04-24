@@ -5,6 +5,7 @@ type ContactPayload = {
   phone?: string;
   service?: string;
   message?: string;
+  website?: string;
 };
 
 const BACKEND_URL = process.env.BACKEND_URL?.replace(/\/$/, "") ?? "http://127.0.0.1:8000";
@@ -12,7 +13,7 @@ const BACKEND_URL = process.env.BACKEND_URL?.replace(/\/$/, "") ?? "http://127.0
 export async function POST(req: NextRequest) {
   try {
     const body = (await req.json()) as ContactPayload;
-    const { name, phone, service, message } = body;
+    const { name, phone, service, message, website } = body;
 
     if (!name || !phone || !service) {
       return NextResponse.json({ error: "Missing fields" }, { status: 400 });
@@ -33,6 +34,7 @@ export async function POST(req: NextRequest) {
         service: service.trim(),
         message: message?.trim() || null,
         source: "fazo.uz",
+        website: website ?? "",
       }),
       cache: "no-store",
     });

@@ -9,6 +9,7 @@ from app.deps import get_current_user
 from app.models.contact import Contact, ContactStatus
 from app.models.user import User
 from app.schemas.contact import ContactCreate, ContactOut, ContactUpdate
+from app.services.rate_limit import contact_limiter
 from app.utils.telegram import send_contact_to_telegram
 
 router = APIRouter(prefix="/api/contacts", tags=["contacts"])
@@ -28,28 +29,39 @@ async def create_contact(
     background: BackgroundTasks,
     db: Session = Depends(get_db),
 ):
+    ip = _client_ip(request) or "unknown"
+
+    if not contact_limiter.allow(f"contact:{ip}", limit=3, window_seconds=60):
+        raise HTTPException(
+            status_code=status.HTTP_429_TOO_MANY_REQUESTS,
+            detail="Juda ko'p urinish — bir oz kuting",
+        )
+
+    is_spam = bool(payload.website and payload.website.strip())
+
     contact = Contact(
         name=payload.name.strip(),
         phone=payload.phone.strip(),
         service=payload.service.strip(),
         message=(payload.message or "").strip() or None,
         source=payload.source,
-        ip_address=_client_ip(request),
+        ip_address=ip if ip != "unknown" else None,
         user_agent=request.headers.get("user-agent"),
-        status=ContactStatus.new,
+        status=ContactStatus.spam if is_spam else ContactStatus.new,
     )
     db.add(contact)
     db.commit()
     db.refresh(contact)
 
-    background.add_task(
-        send_contact_to_telegram,
-        contact.name,
-        contact.phone,
-        contact.service,
-        contact.message,
-        contact.source,
-    )
+    if not is_spam:
+        background.add_task(
+            send_contact_to_telegram,
+            contact.name,
+            contact.phone,
+            contact.service,
+            contact.message,
+            contact.source,
+        )
     return contact
 
 
