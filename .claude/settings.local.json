@@ -2,7 +2,21 @@
   "permissions": {
     "allow": [
       "Bash(npm run *)",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "Bash(rm -rf .next)",
+      "Bash(mkdir -p frontend backend)",
+      "Bash(mv .env.example .env.local .eslintrc.json .gitattributes .gitignore deno.lock DEPLOY.md messages netlify.toml next.config.mjs next-env.d.ts node_modules package.json package-lock.json postcss.config.mjs public README.md src tailwind.config.ts tsconfig.json frontend/)",
+      "PowerShell(Move-Item *)",
+      "Bash(git mv *)",
+      "PowerShell(robocopy .\\\\src .\\\\frontend\\\\src /E /MOVE 2>&1 | Select-Object -Last 20)",
+      "Bash(python *)",
+      "Bash(pip --version)",
+      "Bash(.venv/Scripts/python.exe -m pip install --upgrade pip3)",
+      "Bash(.venv/Scripts/python.exe -m pip install -r requirements.txt)",
+      "Bash(.venv/Scripts/python.exe -c \"from app.main import app; print\\('Import OK'\\)\".)",
+      "Bash(.venv/Scripts/python.exe -c \"from app.main import app; print\\('Import OK'\\)\")",
+      "Bash(.venv/Scripts/python.exe -m pip install email-validator)",
+      "Bash(.venv/Scripts/python.exe *)"
     ]
   }
 }

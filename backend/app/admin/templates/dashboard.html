@@ -1,0 +1,153 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard · {{ app_name }}{% endblock %}
+{% block page_title %}Dashboard{% endblock %}
+
+{% block topbar_right %}
+<form method="get" action="/admin/dashboard" class="range-picker">
+  {% for d in [7, 14, 30, 90, 180] %}
+  <button type="submit" name="days" value="{{ d }}" class="range-btn {% if days == d %}active{% endif %}">{{ d }}d</button>
+  {% endfor %}
+</form>
+{% endblock %}
+
+{% block content %}
+<section class="stat-grid" data-parallax-stage>
+  <div class="stat-card glass-card" data-parallax-tilt>
+    <div class="stat-label">Sahifa ko'rishlar</div>
+    <div class="stat-value">{{ data.overview.total_views }}</div>
+    <div class="stat-delta {% if data.overview.views_delta_pct >= 0 %}up{% else %}down{% endif %}">
+      {% if data.overview.views_delta_pct >= 0 %}▲{% else %}▼{% endif %}
+      {{ data.overview.views_delta_pct }}%
+      <span class="muted">so'nggi davr bilan</span>
+    </div>
+    <div class="stat-spark" data-spark="views"></div>
+  </div>
+
+  <div class="stat-card glass-card" data-parallax-tilt>
+    <div class="stat-label">Unikal sessiyalar</div>
+    <div class="stat-value">{{ data.overview.unique_sessions }}</div>
+    <div class="stat-sub muted">davrida takrorlanmas tashriflar</div>
+  </div>
+
+  <div class="stat-card glass-card" data-parallax-tilt>
+    <div class="stat-label">Yangi murojaatlar</div>
+    <div class="stat-value accent">{{ data.overview.new_contacts }}</div>
+    <div class="stat-delta {% if data.overview.contacts_delta_pct >= 0 %}up{% else %}down{% endif %}">
+      {% if data.overview.contacts_delta_pct >= 0 %}▲{% else %}▼{% endif %}
+      {{ data.overview.contacts_delta_pct }}%
+      <span class="muted">o'zgarish</span>
+    </div>
+  </div>
+
+  <div class="stat-card glass-card" data-parallax-tilt>
+    <div class="stat-label">Konversiya</div>
+    <div class="stat-value">{{ data.overview.conversion_rate }}%</div>
+    <div class="stat-sub muted">murojaat / ko'rish nisbati</div>
+  </div>
+</section>
+
+<section class="chart-row">
+  <div class="chart-card glass-card big" data-parallax-tilt>
+    <header class="chart-head">
+      <div>
+        <div class="chart-title">Sahifa ko'rishlar dinamikasi</div>
+        <div class="chart-sub muted">So'nggi {{ days }} kun</div>
+      </div>
+      <div class="legend">
+        <span class="legend-dot cyan"></span><span>Views</span>
+      </div>
+    </header>
+    <canvas id="chart-views" height="120"></canvas>
+  </div>
+
+  <div class="chart-card glass-card" data-parallax-tilt>
+    <header class="chart-head">
+      <div>
+        <div class="chart-title">Murojaatlar</div>
+        <div class="chart-sub muted">Kunlik</div>
+      </div>
+      <div class="legend">
+        <span class="legend-dot blue"></span><span>Leads</span>
+      </div>
+    </header>
+    <canvas id="chart-contacts" height="120"></canvas>
+  </div>
+</section>
+
+<section class="row">
+  <div class="chart-card glass-card" data-parallax-tilt>
+    <header class="chart-head">
+      <div class="chart-title">Top sahifalar</div>
+    </header>
+    <ul class="top-list">
+      {% for row in data.top_paths %}
+      <li>
+        <span class="top-path">{{ row.path }}</span>
+        <span class="top-count">{{ row.count }}</span>
+        <div class="top-bar"><i style="--w: {{ (row.count / (data.top_paths[0].count if data.top_paths and data.top_paths[0].count else 1)) * 100 }}%"></i></div>
+      </li>
+      {% else %}
+      <li class="muted">Ma'lumot yo'q</li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="chart-card glass-card" data-parallax-tilt>
+    <header class="chart-head">
+      <div class="chart-title">Qurilmalar</div>
+    </header>
+    <canvas id="chart-devices" height="180"></canvas>
+  </div>
+
+  <div class="chart-card glass-card" data-parallax-tilt>
+    <header class="chart-head">
+      <div class="chart-title">Tillar</div>
+    </header>
+    <canvas id="chart-locales" height="180"></canvas>
+  </div>
+</section>
+
+<section class="glass-card panel" data-parallax-tilt>
+  <header class="panel-head">
+    <div class="chart-title">Oxirgi murojaatlar</div>
+    <a href="/admin/contacts" class="link-accent">Barchasini ko'rish →</a>
+  </header>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Ism</th>
+        <th>Telefon</th>
+        <th>Xizmat</th>
+        <th>Status</th>
+        <th>Sana</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for c in data.recent_contacts %}
+      <tr class="row-click" data-href="/admin/contacts/{{ c.id }}">
+        <td>{{ c.name }}</td>
+        <td>{{ c.phone }}</td>
+        <td>{{ c.service }}</td>
+        <td><span class="badge status-{{ c.status }}">{{ c.status }}</span></td>
+        <td class="muted">{{ c.created_at }}</td>
+      </tr>
+      {% else %}
+      <tr><td colspan="5" class="muted center">Murojaat yo'q</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  window.__DASHBOARD__ = {
+    views: {{ data.views_series | tojson }},
+    contacts: {{ data.contacts_series | tojson }},
+    devices: {{ data.top_devices | tojson }},
+    locales: {{ data.top_locales | tojson }}
+  };
+</script>
+<script src="/admin/static/js/charts.js"></script>
+{% endblock %}

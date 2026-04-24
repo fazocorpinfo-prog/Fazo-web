@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block title %}Murojaat #{{ contact.id }} · {{ app_name }}{% endblock %}
+{% block page_title %}Murojaat #{{ contact.id }}{% endblock %}
+
+{% block content %}
+<div class="detail-grid">
+  <section class="glass-card panel" data-parallax-tilt>
+    <header class="panel-head">
+      <div>
+        <div class="detail-name">{{ contact.name }}</div>
+        <div class="muted">{{ contact.created_at.strftime('%Y-%m-%d %H:%M') }}</div>
+      </div>
+      <span class="badge status-{{ contact.status.value }}">{{ contact.status.value }}</span>
+    </header>
+
+    <dl class="kv">
+      <dt>Telefon</dt><dd><a href="tel:{{ contact.phone }}">{{ contact.phone }}</a></dd>
+      <dt>Xizmat</dt><dd>{{ contact.service }}</dd>
+      <dt>Manba</dt><dd>{{ contact.source or '—' }}</dd>
+      <dt>IP</dt><dd class="muted">{{ contact.ip_address or '—' }}</dd>
+      <dt>User Agent</dt><dd class="muted truncate">{{ contact.user_agent or '—' }}</dd>
+    </dl>
+
+    <div class="message-block">
+      <div class="field-label">Xabar</div>
+      <p>{{ contact.message or '—' }}</p>
+    </div>
+  </section>
+
+  <section class="glass-card panel" data-parallax-tilt>
+    <form method="post" action="/admin/contacts/{{ contact.id }}" class="stack">
+      <label class="field">
+        <span class="field-label">Status</span>
+        <select name="status" class="input-glass">
+          {% for s in statuses %}
+          <option value="{{ s }}" {% if contact.status.value == s %}selected{% endif %}>{{ s }}</option>
+          {% endfor %}
+        </select>
+      </label>
+      <label class="field">
+        <span class="field-label">Eslatmalar</span>
+        <textarea name="notes" rows="6" class="input-glass">{{ contact.notes or '' }}</textarea>
+      </label>
+      <div class="row-flex">
+        <button class="btn-glass btn-primary" type="submit">Saqlash</button>
+        <a href="/admin/contacts" class="btn-ghost">Orqaga</a>
+      </div>
+    </form>
+
+    <form method="post" action="/admin/contacts/{{ contact.id }}/delete" class="danger-zone" onsubmit="return confirm('O‘chirilsinmi?');">
+      <button class="btn-danger" type="submit">Murojaatni o‘chirish</button>
+    </form>
+  </section>
+</div>
+{% endblock %}

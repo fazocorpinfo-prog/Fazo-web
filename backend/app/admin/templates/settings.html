@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}Sozlamalar · {{ app_name }}{% endblock %}
+{% block page_title %}Sozlamalar{% endblock %}
+
+{% block content %}
+<div class="detail-grid">
+  <section class="glass-card panel" data-parallax-tilt>
+    <header class="panel-head"><div class="chart-title">Profil</div></header>
+    <dl class="kv">
+      <dt>Login</dt><dd>{{ user.username }}</dd>
+      <dt>Email</dt><dd>{{ user.email }}</dd>
+      <dt>Ro‘l</dt><dd>{% if user.is_superuser %}superuser{% else %}admin{% endif %}</dd>
+      <dt>Ro‘yxatdan o‘tgan</dt><dd class="muted">{{ user.created_at.strftime('%Y-%m-%d %H:%M') }}</dd>
+      <dt>Oxirgi kirish</dt><dd class="muted">{{ user.last_login_at.strftime('%Y-%m-%d %H:%M') if user.last_login_at else '—' }}</dd>
+    </dl>
+  </section>
+
+  <section class="glass-card panel" data-parallax-tilt>
+    <header class="panel-head"><div class="chart-title">Parolni yangilash</div></header>
+
+    {% if message %}<div class="alert alert-ok">{{ message }}</div>{% endif %}
+    {% if error %}<div class="alert alert-error">{{ error }}</div>{% endif %}
+
+    <form method="post" action="/admin/settings/password" class="stack">
+      <label class="field">
+        <span class="field-label">Joriy parol</span>
+        <input class="input-glass" type="password" name="current_password" required autocomplete="current-password" />
+      </label>
+      <label class="field">
+        <span class="field-label">Yangi parol</span>
+        <input class="input-glass" type="password" name="new_password" required minlength="8" autocomplete="new-password" />
+      </label>
+      <label class="field">
+        <span class="field-label">Tasdiqlash</span>
+        <input class="input-glass" type="password" name="confirm_password" required minlength="8" autocomplete="new-password" />
+      </label>
+      <div class="row-flex">
+        <button class="btn-glass btn-primary" type="submit">Yangilash</button>
+      </div>
+    </form>
+  </section>
+</div>
+{% endblock %}

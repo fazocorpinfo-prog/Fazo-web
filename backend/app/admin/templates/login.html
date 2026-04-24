@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kirish · {{ app_name }}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@500;600;700;800&display=swap"
+  />
+  <link rel="stylesheet" href="/admin/static/css/admin.css" />
+</head>
+<body class="login-body">
+  <canvas id="starfield" class="starfield"></canvas>
+  <div class="ambient-overlay"></div>
+  <div class="noise-overlay"></div>
+
+  <div class="login-stage" data-parallax-stage>
+    <div class="login-orbit orbit-a" data-parallax-depth="0.04"></div>
+    <div class="login-orbit orbit-b" data-parallax-depth="0.08"></div>
+    <div class="login-orbit orbit-c" data-parallax-depth="0.12"></div>
+
+    <div class="login-card glass-card" data-parallax-tilt data-tilt-max="8">
+      <div class="login-glow"></div>
+
+      <div class="login-brand" data-parallax-depth="0.14">
+        <div class="brand-logo big">
+          <svg viewBox="0 0 64 64" width="56" height="56" aria-hidden="true">
+            <defs>
+              <linearGradient id="lg" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0%" stop-color="#00C2FF" />
+                <stop offset="100%" stop-color="#0050FF" />
+              </linearGradient>
+            </defs>
+            <circle cx="32" cy="32" r="28" fill="none" stroke="url(#lg)" stroke-width="2" />
+            <path d="M20 22h24M20 32h18M20 42h14" stroke="url(#lg)" stroke-width="3" stroke-linecap="round" />
+          </svg>
+        </div>
+        <h1 class="login-title">FAZO <span>console</span></h1>
+        <p class="login-sub">Boshqaruv paneliga xush kelibsiz</p>
+      </div>
+
+      {% if error %}
+      <div class="alert alert-error" role="alert">{{ error }}</div>
+      {% endif %}
+
+      <form class="login-form" method="post" action="/admin/login" data-parallax-depth="0.06">
+        <label class="field">
+          <span class="field-label">Login</span>
+          <input
+            class="input-glass"
+            type="text"
+            name="username"
+            autocomplete="username"
+            required
+            autofocus
+            placeholder="admin"
+          />
+        </label>
+        <label class="field">
+          <span class="field-label">Parol</span>
+          <input
+            class="input-glass"
+            type="password"
+            name="password"
+            autocomplete="current-password"
+            required
+            placeholder="••••••••"
+          />
+        </label>
+        <button type="submit" class="btn-glass btn-primary">
+          <span>Kirish</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </button>
+      </form>
+
+      <div class="login-foot">
+        <span class="dot"></span>
+        <span>{{ app_name }} · secure session</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="/admin/static/js/starfield.js"></script>
+  <script src="/admin/static/js/parallax.js"></script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Murojaatlar · {{ app_name }}{% endblock %}
+{% block page_title %}Murojaatlar{% endblock %}
+
+{% block content %}
+<section class="glass-card panel" data-parallax-tilt data-tilt-max="2">
+  <form method="get" action="/admin/contacts" class="filters">
+    <input type="search" name="q" value="{{ q }}" placeholder="Ism, telefon, xizmat bo'yicha qidirish…" class="input-glass grow" />
+    <select name="status" class="input-glass">
+      <option value="">Barcha statuslar</option>
+      {% for s in statuses %}
+      <option value="{{ s }}" {% if status_filter == s %}selected{% endif %}>{{ s }}</option>
+      {% endfor %}
+    </select>
+    <button class="btn-glass" type="submit">Filter</button>
+    <a href="/admin/contacts" class="btn-ghost">Tozalash</a>
+  </form>
+
+  <div class="table-wrap">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Ism</th>
+          <th>Telefon</th>
+          <th>Xizmat</th>
+          <th>Status</th>
+          <th>Xabar</th>
+          <th>Sana</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for c in contacts %}
+        <tr class="row-click" data-href="/admin/contacts/{{ c.id }}">
+          <td class="muted">#{{ c.id }}</td>
+          <td>{{ c.name }}</td>
+          <td>{{ c.phone }}</td>
+          <td>{{ c.service }}</td>
+          <td><span class="badge status-{{ c.status.value }}">{{ c.status.value }}</span></td>
+          <td class="truncate">{{ c.message or '—' }}</td>
+          <td class="muted">{{ c.created_at.strftime('%Y-%m-%d %H:%M') }}</td>
+        </tr>
+        {% else %}
+        <tr><td colspan="7" class="muted center">Mos keladigan murojaat topilmadi</td></tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endblock %}
