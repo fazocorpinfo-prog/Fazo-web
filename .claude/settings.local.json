@@ -22,7 +22,16 @@
       "Bash(winget install *)",
       "Read(//c/Program Files \\(x86\\)/cloudflared//**)",
       "Read(//c/Program Files/**)",
-      "Bash(/c/Program Files \\(x86\\)/cloudflared/cloudflared.exe tunnel *)"
+      "Bash(/c/Program Files \\(x86\\)/cloudflared/cloudflared.exe tunnel *)",
+      "WebFetch(domain:aruba-annually-transactions-compute.trycloudflare.com)",
+      "Bash(curl *)",
+      "Bash(git -C \"C:/Users/muhammad yusuf/Documents/GitHub/Fazo-web\" remote -v)",
+      "Bash(git -C \"C:/Users/muhammad yusuf/Documents/GitHub/Fazo-web\" branch --show-current)",
+      "Bash(where cloudflared *)",
+      "Bash(where python *)",
+      "Bash(./.venv/Scripts/python.exe run.py)",
+      "Bash(C:/Program Files \\(x86\\)/cloudflared/cloudflared.exe tunnel *)",
+      "Bash(git *)"
     ]
   }
 }
