@@ -1,10 +1,11 @@
 # Netlify configuration for FAZO website (Next.js 14)
-# https://docs.netlify.com/configure-builds/file-based-configuration/
+# https://docs.netlify.com/integrations/frameworks/next-js/
 
 [build]
   command = "npm run build"
-  # Use relative path only - never use absolute/Windows paths
-  publish = ".next"
 
 [build.environment]
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
