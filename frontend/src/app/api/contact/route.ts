@@ -42,12 +42,25 @@ export async function POST(req: NextRequest) {
     if (!response.ok) {
       const detail = await response.text().catch(() => "");
       console.error("Backend rejected contact:", response.status, detail);
-      return NextResponse.json({ error: "Backend error" }, { status: 502 });
+      return NextResponse.json(
+        { error: "Backend error", debug: { backend: BACKEND_URL, status: response.status, detail } },
+        { status: 502 },
+      );
     }
 
     return NextResponse.json({ success: true });
   } catch (error) {
     console.error("Contact proxy failed:", error);
-    return NextResponse.json({ error: "Failed to submit" }, { status: 500 });
+    return NextResponse.json(
+      {
+        error: "Failed to submit",
+        debug: {
+          backend: BACKEND_URL,
+          message: error instanceof Error ? error.message : String(error),
+          name: error instanceof Error ? error.name : undefined,
+        },
+      },
+      { status: 500 },
+    );
   }
 }
