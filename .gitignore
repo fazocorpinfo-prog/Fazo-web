@@ -1,0 +1,12 @@
+
+# secrets — bot token / group id
+env
+.env
+*.env
+
+# separate sibling projects (own git)
+mudarris-landing/
+fazo_kurs_crm/
+.agents/
+.claude/skills/
+skills-lock.json

@@ -13,6 +13,8 @@ type CosmicButtonProps = {
   onClick?: () => void;
   type?: "button" | "submit" | "reset";
   ariaLabel?: string;
+  target?: string;
+  rel?: string;
 };
 
 const baseClass =
@@ -33,6 +35,8 @@ export function CosmicButton({
   onClick,
   type = "button",
   ariaLabel,
+  target,
+  rel,
 }: CosmicButtonProps) {
   const content = (
     <>
@@ -48,6 +52,8 @@ export function CosmicButton({
     return (
       <motion.a
         href={href}
+        target={target}
+        rel={rel}
         aria-label={ariaLabel}
         className={`${baseClass} ${className ?? ""}`}
         style={baseStyle}

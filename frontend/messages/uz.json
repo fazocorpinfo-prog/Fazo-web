@@ -1,9 +1,9 @@
 {
   "nav": {
     "services": "Xizmatlar",
-    "process":  "Jarayon",
-    "team":     "Jamoa",
-    "contact":  "Aloqa",
+    "process": "Jarayon",
+    "team": "Jamoa",
+    "contact": "Aloqa",
     "portfolio": "Portfolio",
     "gallery": "Galereya"
   },
@@ -16,19 +16,22 @@
     "ctaButton": "Loyiha boshlash",
     "telegram": "https://t.me/Oybek_Jalolov",
     "instagram": "https://www.instagram.com/fanus.agency/",
-    "youtube": "https://youtube.com/fazo"
+    "youtube": "https://youtube.com/fazo",
+    "mudarris": "MUDARRIS (AI-CRM)",
+    "crmDemo": "CRM jonli demo",
+    "ecosystem": "Ekotizim"
   },
   "hero": {
-    "headline":    "Biz raqamli galaktikalarni quramiz.",
+    "headline": "Biz raqamli galaktikalarni quramiz.",
     "subheadline": "Web · Backend · Android · iOS · SMM",
-    "ctaStart":    "Loyiha boshlash",
-    "ctaContact":  "Bog'lanish"
+    "ctaStart": "Loyiha boshlash",
+    "ctaContact": "Bog'lanish"
   },
   "manifesto": {
-    "statement":   "Muhandislik va estetika birlashgan makon.",
-    "paragraph1":  "FAZO — bu oddiy agentlik emas. Biz har bir loyihaga tizimli yondashamiz. Har bir mahsulot aniq arxitektura, toza kod, foydalanuvchi tajribasi va kelajakda kengaytirish imkoniyati bilan yaratiladi.",
-    "paragraph2":  "Biz tez natija emas, barqaror natija yaratamiz. Texnologiya biz uchun vosita, natija esa mijozning o'sishi.",
-    "paragraph3":  "Biz dizaynni bezak emas, tizim deb ko'ramiz. Texnologiyani vosita emas, imkoniyat deb bilamiz. Natija — raqamli muhitda o'z o'rniga ega mahsulot."
+    "statement": "Muhandislik va estetika birlashgan makon.",
+    "paragraph1": "FAZO — bu oddiy agentlik emas. Biz har bir loyihaga tizimli yondashamiz. Har bir mahsulot aniq arxitektura, toza kod, foydalanuvchi tajribasi va kelajakda kengaytirish imkoniyati bilan yaratiladi.",
+    "paragraph2": "Biz tez natija emas, barqaror natija yaratamiz. Texnologiya biz uchun vosita, natija esa mijozning o'sishi.",
+    "paragraph3": "Biz dizaynni bezak emas, tizim deb ko'ramiz. Texnologiyani vosita emas, imkoniyat deb bilamiz. Natija — raqamli muhitda o'z o'rniga ega mahsulot."
   },
   "services": {
     "title": "Biz nima yaratamiz",
@@ -38,36 +41,36 @@
       "Biz Raqamli ekotizimlar quramiz"
     ],
     "web": {
-      "title":   "Web Dasturlash",
-      "intro":   "Zamonaviy web platformalar va admin tizimlar. Kengaytiriladigan arxitektura asosida ishlab chiqilgan.",
+      "title": "Web Dasturlash",
+      "intro": "Zamonaviy web platformalar va admin tizimlar. Kengaytiriladigan arxitektura asosida ishlab chiqilgan.",
       "bullet1": "SEO optimallashtirilgan tuzilma",
       "bullet2": "Responsive, tezlikka yo'naltirilgan UI",
       "bullet3": "CMS va maxsus panel integratsiyasi"
     },
     "backend": {
-      "title":   "Backend Tizimlar",
-      "intro":   "Murakkab biznes jarayonlarini avtomatlashtiruvchi ishonchli backend tizimlar.",
+      "title": "Backend Tizimlar",
+      "intro": "Murakkab biznes jarayonlarini avtomatlashtiruvchi ishonchli backend tizimlar.",
       "bullet1": "API-first arxitektura",
       "bullet2": "Ma'lumotlar bazasi optimizatsiyasi va xavfsizlik",
       "bullet3": "Uchinchi tomon integratsiyalari"
     },
     "android": {
-      "title":   "Android Ilovalar",
-      "intro":   "Android platformasi uchun tezkor va barqaror mobil ilovalar.",
+      "title": "Android Ilovalar",
+      "intro": "Android platformasi uchun tezkor va barqaror mobil ilovalar.",
       "bullet1": "Optimallashtirilgan UX va silliq ish",
       "bullet2": "Push bildirishnomalar va offline qo'llab-quvvatlash",
       "bullet3": "Backend bilan to'liq integratsiya"
     },
     "ios": {
-      "title":   "iOS Ilovalar",
-      "intro":   "Apple standarti darajasida dizayn va muhandislik bilan yaratilgan iOS tajribalari.",
+      "title": "iOS Ilovalar",
+      "intro": "Apple standarti darajasida dizayn va muhandislik bilan yaratilgan iOS tajribalari.",
       "bullet1": "Native Swift yoki cross-platform",
       "bullet2": "App Store optimizatsiyasi",
       "bullet3": "Backend va API bilan to'liq integratsiya"
     },
     "smm": {
-      "title":   "SMM va Strategiya",
-      "intro":   "Ambitsiyali bizneslar uchun strategik raqamli o'sish va brend joylashuvi.",
+      "title": "SMM va Strategiya",
+      "intro": "Ambitsiyali bizneslar uchun strategik raqamli o'sish va brend joylashuvi.",
       "bullet1": "Kontent strategiyasi va reklama kampaniyalari",
       "bullet2": "Vizual identitet tizimi",
       "bullet3": "Analitika va doimiy optimizatsiya"
@@ -75,54 +78,54 @@
   },
   "positioning": {
     "line1": "Ambitsiyali asoschilarga mo'ljallangan.",
-    "line2":  "Biz faqat kod yozmaymiz — biz tizim quramiz."
+    "line2": "Biz faqat kod yozmaymiz — biz tizim quramiz."
   },
   "trust": {
     "transparent": "Shaffof jarayon",
-    "milestones":  "Aniq bosqichlar",
-    "clarity":     "Texnik aniqlik",
-    "support":     "Uzoq muddatli qo'llab-quvvatlash"
+    "milestones": "Aniq bosqichlar",
+    "clarity": "Texnik aniqlik",
+    "support": "Uzoq muddatli qo'llab-quvvatlash"
   },
   "process": {
     "title": "Qanday ishlaymiz",
     "idea": {
       "title": "Tahlil",
-      "desc":  "Biz biznes maqsadlarini tahlil qilamiz, arxitekturani aniqlaymiz va loyiha xaritasini tuzamiz. Har bir qaror tadqiqot bilan asoslanadi."
+      "desc": "Biz biznes maqsadlarini tahlil qilamiz, arxitekturani aniqlaymiz va loyiha xaritasini tuzamiz. Har bir qaror tadqiqot bilan asoslanadi."
     },
     "design": {
       "title": "Dizayn",
-      "desc":  "Estetika va funksionallikni muvozanatlagan vizual tizimlar va foydalanuvchi yo'nalishlarini yaratamiz — har bir ekran maqsad bilan loyihalangan."
+      "desc": "Estetika va funksionallikni muvozanatlagan vizual tizimlar va foydalanuvchi yo'nalishlarini yaratamiz — har bir ekran maqsad bilan loyihalangan."
     },
     "development": {
       "title": "Rivojlantirish",
-      "desc":  "Toza kod. Modulli tuzilma. Xavfsizlik. Biz uzoq muddatli qo'llab-quvvatlashni majburiy talab sifatida qurish bilan ishlaymiz."
+      "desc": "Toza kod. Modulli tuzilma. Xavfsizlik. Biz uzoq muddatli qo'llab-quvvatlashni majburiy talab sifatida qurish bilan ishlaymiz."
     },
     "launch": {
       "title": "Ishga tushirish",
-      "desc":  "Joylash, ishlash monitoringi va doimiy qo'llab-quvvatlash. Biz ishga tushirishdan keyin ham siz bilan birgamiz."
+      "desc": "Joylash, ishlash monitoringi va doimiy qo'llab-quvvatlash. Biz ishga tushirishdan keyin ham siz bilan birgamiz."
     }
   },
   "approach": {
     "title": "Bizning tamoyillar",
     "innovation": {
       "title": "Innovatsiya",
-      "body":  "Biz zamonaviy texnologiyalar bilan chegara qo'yamiz — WebGL tajribalaridan tortib kengaytiriladigan microservislargacha. Har bir loyiha yaxshiroq narsa yaratish imkoniyatidir."
+      "body": "Biz zamonaviy texnologiyalar bilan chegara qo'yamiz — WebGL tajribalaridan tortib kengaytiriladigan microservislargacha. Har bir loyiha yaxshiroq narsa yaratish imkoniyatidir."
     },
     "precision": {
       "title": "Muhandislik aniqligi",
-      "body":  "Biz har bir yechimni kengayish, xavfsizlik va uzoq muddatli qo'llab-quvvatlash uchun arxitektura qilamiz. Murakkablik bizning sohavimiz; soddalik esa natijamiz."
+      "body": "Biz har bir yechimni kengayish, xavfsizlik va uzoq muddatli qo'llab-quvvatlash uchun arxitektura qilamiz. Murakkablik bizning sohavimiz; soddalik esa natijamiz."
     },
     "partnership": {
       "title": "Uzoq muddatli hamkorlik",
-      "body":  "Biz ishga tushirishdan keyin yo'qolmaymiz. Biz barqaror munosabatlar quramiz, har bosqichda tuzilgan yangilanishlar va texnik aniqlik taqdim etamiz."
+      "body": "Biz ishga tushirishdan keyin yo'qolmaymiz. Biz barqaror munosabatlar quramiz, har bosqichda tuzilgan yangilanishlar va texnik aniqlik taqdim etamiz."
     }
   },
   "team": {
-    "title":    "Jamoa",
+    "title": "Jamoa",
     "subtitle": "Professional muhandislar jamoasi.",
     "diyorbek": {
-      "name":  "Jalolov Diyorbek",
-      "role":  "CEO & Professional Marketolog",
+      "name": "Jalolov Diyorbek",
+      "role": "CEO & Professional Marketolog",
       "specialty": "Marketing & Strategiya",
       "workplace": "Dorada",
       "experience": "5+ yil",
@@ -130,8 +133,8 @@
       "about": "Professional marketolog va kompaniya asoschisi. 5 yildan ortiq tajriba bilan brend strategiyasi, raqamli marketing va biznesni o'stirish bo'yicha mutaxassis. Dorada kompaniyasida ishlaydi."
     },
     "oybek": {
-      "name":  "Jalolov Oybek",
-      "role":  "Flutter & Android Developer",
+      "name": "Jalolov Oybek",
+      "role": "Flutter & Android Developer",
       "specialty": "Flutter & Android Native",
       "workplace": "UzAutoMotors",
       "experience": "3+ yil",
@@ -139,8 +142,8 @@
       "about": "Flutter va Android Native texnologiyalarida ixtisoslashgan mobil dasturchi. UzAutoMotors kompaniyasida mobil ilovalar ishlab chiqadi. 3+ yillik tajriba."
     },
     "tursunjon": {
-      "name":  "Hamidov Tursunjon",
-      "role":  "Cyber Security & Full-Stack",
+      "name": "Hamidov Tursunjon",
+      "role": "Cyber Security & Full-Stack",
       "specialty": "Cyber Security",
       "workplace": "FAZO",
       "experience": "2+ yil",
@@ -148,8 +151,8 @@
       "about": "Kiberxavfsizlik mutaxassisi va full-stack dasturchi. React.js va Node.js asosida xavfsiz tizimlar yaratadi. Bug bounty va penetration testing tajribasi mavjud."
     },
     "muhammadali": {
-      "name":  "Jalilov Muhammad Ali",
-      "role":  "Consigliere",
+      "name": "Jalilov Muhammad Ali",
+      "role": "Consigliere",
       "specialty": "Consigliere — Django",
       "workplace": "FAZO",
       "experience": "2+ yil",
@@ -158,14 +161,14 @@
     }
   },
   "contact": {
-    "title":     "Loyiha boshlash",
-    "name":      "Ismingiz",
-    "phone":     "Telefon raqami",
-    "service":   "Xizmatni tanlang",
-    "message":   "Loyiha haqida gapirib bering",
-    "submit":    "Xabar yuborish",
-    "success":   "Xabar yuborildi! Tez orada bog'lanamiz.",
-    "error":     "Xatolik yuz berdi. Iltimos qaytadan urinib ko'ring.",
+    "title": "Loyiha boshlash",
+    "name": "Ismingiz",
+    "phone": "Telefon raqami",
+    "service": "Xizmatni tanlang",
+    "message": "Loyiha haqida gapirib bering",
+    "submit": "Xabar yuborish",
+    "success": "Xabar yuborildi! Tez orada bog'lanamiz.",
+    "error": "Xatolik yuz berdi. Iltimos qaytadan urinib ko'ring.",
     "trustLine": "Shaffof jarayon • Aniq bosqichlar • Uzoq muddatli qo'llab-quvvatlash"
   },
   "modal": {
@@ -173,10 +176,16 @@
     "successMessage": "Xabaringiz muvaffaqiyatli yuborildi. Tez orada siz bilan bog'lanamiz.",
     "close": "Yopish"
   },
+  "notFound": {
+    "code": "404",
+    "title": "Sahifa topilmadi",
+    "text": "Bu koordinatalar bo'yicha hech nima yo'q. Sahifa boshqa galaktikaga ko'chgan yoki manzil noto'g'ri kiritilgan bo'lishi mumkin.",
+    "home": "Bosh sahifaga qaytish"
+  },
   "cta": {
     "headline": "G'oyangiz shablondan ko'ra ko'proqqa loyiq.",
-    "subtext":  "Arxitektura. Aniqlik. O'sish.",
-    "button":   "Boshlash"
+    "subtext": "Arxitektura. Aniqlik. O'sish.",
+    "button": "Boshlash"
   },
   "portfolio": {
     "label": "Portfolio",
@@ -212,19 +221,46 @@
       "description": "Avtomobil savdo platformasi mobil ilovasi — avtomobillarni ko'rish, solishtirish va ariza berish imkoniyati.",
       "result": "Qulay avtomobil qidiruv tizimi"
     },
-    "stat1": { "value": "6+", "label": "Tugatilgan loyihalar" },
-    "stat2": { "value": "98%", "label": "Mijozlar mamnuniyati" },
-    "stat3": { "value": "10+", "label": "Doimiy hamkorlar" },
-    "stat4": { "value": "3+", "label": "Yillik tajriba" }
+    "stat1": {
+      "value": "6+",
+      "label": "Tugatilgan loyihalar"
+    },
+    "stat2": {
+      "value": "98%",
+      "label": "Mijozlar mamnuniyati"
+    },
+    "stat3": {
+      "value": "10+",
+      "label": "Doimiy hamkorlar"
+    },
+    "stat4": {
+      "value": "3+",
+      "label": "Yillik tajriba"
+    }
   },
   "why": {
     "title": "Ambitsiyali asoschilarga mo'ljallangan.",
     "items": [
-      { "label": "Arxitektura ustuvorligi",         "body": "Har bir yechim shablon emas, tizimli reja asosida boshlanadi." },
-      { "label": "Uzoq muddatli kengayish",          "body": "Biz siz borgisi kelgan joyga qarab quramiz, hozirgi holatga emas." },
-      { "label": "Toza va qo'llab-quvvatlanadigan kod", "body": "Kelajak ishlab chiquvchilar — va sizning biznesingiz minnatdor bo'ladigan kod." },
-      { "label": "Shaffof muloqot",                  "body": "Har bosqichda tizimli yangilanishlar va texnik aniqlik." },
-      { "label": "Strategik ijro",                   "body": "Muddatlar, bosqichlar va yashirin kutilmovchi holatlarsiz yetkazib berish." }
+      {
+        "label": "Arxitektura ustuvorligi",
+        "body": "Har bir yechim shablon emas, tizimli reja asosida boshlanadi."
+      },
+      {
+        "label": "Uzoq muddatli kengayish",
+        "body": "Biz siz borgisi kelgan joyga qarab quramiz, hozirgi holatga emas."
+      },
+      {
+        "label": "Toza va qo'llab-quvvatlanadigan kod",
+        "body": "Kelajak ishlab chiquvchilar — va sizning biznesingiz minnatdor bo'ladigan kod."
+      },
+      {
+        "label": "Shaffof muloqot",
+        "body": "Har bosqichda tizimli yangilanishlar va texnik aniqlik."
+      },
+      {
+        "label": "Strategik ijro",
+        "body": "Muddatlar, bosqichlar va yashirin kutilmovchi holatlarsiz yetkazib berish."
+      }
     ]
   },
   "floating": {
@@ -246,10 +282,22 @@
       "title": "Shaffof hamkorlik",
       "text": "Har hafta tizimli yangilanishlar, aniq bosqichlar va to'liq texnik shaffoflik — siz doim jarayondan xabardorsiz."
     },
-    "stat1": { "value": "100%", "label": "Shaffof jarayon" },
-    "stat2": { "value": "24/7", "label": "Qo'llab-quvvatlash" },
-    "stat3": { "value": "2x", "label": "Tezroq yetkazish" },
-    "stat4": { "value": "0", "label": "Yashirin to'lovlar" }
+    "stat1": {
+      "value": "100%",
+      "label": "Shaffof jarayon"
+    },
+    "stat2": {
+      "value": "24/7",
+      "label": "Qo'llab-quvvatlash"
+    },
+    "stat3": {
+      "value": "2x",
+      "label": "Tezroq yetkazish"
+    },
+    "stat4": {
+      "value": "0",
+      "label": "Yashirin to'lovlar"
+    }
   },
   "gallery": {
     "label": "Galereya",

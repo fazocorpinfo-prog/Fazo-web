@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { Check } from "lucide-react";
+import { useState, type ReactNode } from "react";
 
 const EASE = [0.4, 0, 0.2, 1] as const;
 
@@ -16,6 +17,8 @@ type CosmicInputProps = {
   inputMode?: "text" | "numeric" | "email";
   multiline?: boolean;
   rows?: number;
+  icon?: ReactNode;
+  valid?: boolean;
 };
 
 export function CosmicInput({
@@ -29,9 +32,12 @@ export function CosmicInput({
   inputMode,
   multiline,
   rows = 4,
+  icon,
+  valid,
 }: CosmicInputProps) {
   const [focused, setFocused] = useState(false);
   const floated = focused || value.length > 0;
+  const hasSlot = Boolean(icon);
 
   const style = {
     borderColor: error
@@ -76,7 +82,7 @@ export function CosmicInput({
           onChange={(e) => onChange(e.target.value)}
           onFocus={() => setFocused(true)}
           onBlur={() => setFocused(false)}
-          className="w-full resize-none rounded-xl px-4 pb-3 pt-7 text-[var(--text-primary)]"
+          className={`w-full resize-none rounded-xl px-4 pb-3 pt-7 text-[var(--text-primary)] ${hasSlot ? "pr-11" : ""}`}
           style={style}
         />
       ) : (
@@ -89,10 +95,44 @@ export function CosmicInput({
           onBlur={() => setFocused(false)}
           autoComplete={autoComplete}
           inputMode={inputMode}
-          className="w-full rounded-xl px-4 pb-2 pt-6 text-[var(--text-primary)]"
+          className={`w-full rounded-xl px-4 pb-2 pt-6 text-[var(--text-primary)] ${hasSlot ? "pr-11" : ""}`}
           style={style}
         />
       )}
+
+      {hasSlot ? (
+        <div
+          className={`pointer-events-none absolute right-3.5 ${multiline ? "top-4" : "top-1/2 -translate-y-1/2"}`}
+          aria-hidden
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            {valid ? (
+              <motion.span
+                key="valid"
+                className="flex h-5 w-5 items-center justify-center rounded-full text-[var(--accent-cyan)]"
+                style={{ boxShadow: "0 0 12px rgba(0,194,255,0.35)", background: "rgba(0,194,255,0.12)" }}
+                initial={{ scale: 0, opacity: 0, rotate: -30 }}
+                animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                exit={{ scale: 0, opacity: 0 }}
+                transition={{ duration: 0.3, ease: EASE }}
+              >
+                <Check className="h-3 w-3" strokeWidth={3} />
+              </motion.span>
+            ) : (
+              <motion.span
+                key="icon"
+                className="text-[var(--text-secondary)] opacity-50"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 0.5 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2, ease: EASE }}
+              >
+                {icon}
+              </motion.span>
+            )}
+          </AnimatePresence>
+        </div>
+      ) : null}
     </motion.div>
   );
 }

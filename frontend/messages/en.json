@@ -1,9 +1,9 @@
 {
   "nav": {
     "services": "Services",
-    "process":  "Process",
-    "team":     "Team",
-    "contact":  "Contact",
+    "process": "Process",
+    "team": "Team",
+    "contact": "Contact",
     "portfolio": "Portfolio",
     "gallery": "Gallery"
   },
@@ -16,19 +16,22 @@
     "ctaButton": "Start a Project",
     "telegram": "https://t.me/Oybek_Jalolov",
     "instagram": "https://www.instagram.com/fanus.agency/",
-    "youtube": "https://youtube.com/fazo"
+    "youtube": "https://youtube.com/fazo",
+    "mudarris": "MUDARRIS (AI-CRM)",
+    "crmDemo": "CRM live demo",
+    "ecosystem": "Ecosystem"
   },
   "hero": {
-    "headline":      "We engineer digital galaxies.",
-    "subheadline":   "Web · Backend · Android · iOS · SMM",
-    "ctaStart":      "Start a Project",
-    "ctaContact":    "Get in Touch"
+    "headline": "We engineer digital galaxies.",
+    "subheadline": "Web · Backend · Android · iOS · SMM",
+    "ctaStart": "Start a Project",
+    "ctaContact": "Get in Touch"
   },
   "manifesto": {
-    "statement":   "Engineering meets aesthetic intelligence.",
-    "paragraph1":  "FAZO is not just an agency. We approach every project as a structured system. Every product we build is designed with clean architecture, maintainable code, refined user experience, and long-term scalability.",
-    "paragraph2":  "We don't chase fast launches. We build sustainable growth. Technology is our tool. Impact is the outcome.",
-    "paragraph3":  "We see design as a system, not decoration. We treat technology as potential, not just tools. The result is a product that belongs in the future."
+    "statement": "Engineering meets aesthetic intelligence.",
+    "paragraph1": "FAZO is not just an agency. We approach every project as a structured system. Every product we build is designed with clean architecture, maintainable code, refined user experience, and long-term scalability.",
+    "paragraph2": "We don't chase fast launches. We build sustainable growth. Technology is our tool. Impact is the outcome.",
+    "paragraph3": "We see design as a system, not decoration. We treat technology as potential, not just tools. The result is a product that belongs in the future."
   },
   "services": {
     "title": "What We Build",
@@ -38,36 +41,36 @@
       "We build Digital Ecosystems"
     ],
     "web": {
-      "title":   "Web Development",
-      "intro":   "Modern web platforms and administrative systems built with scalable architecture.",
+      "title": "Web Development",
+      "intro": "Modern web platforms and administrative systems built with scalable architecture.",
       "bullet1": "SEO-optimized structure",
       "bullet2": "Responsive, performance-first UI",
       "bullet3": "CMS & custom dashboard integration"
     },
     "backend": {
-      "title":   "Backend Systems",
-      "intro":   "Robust backend systems powering complex business logic and integrations.",
+      "title": "Backend Systems",
+      "intro": "Robust backend systems powering complex business logic and integrations.",
       "bullet1": "API-first architecture",
       "bullet2": "Database optimization & security",
       "bullet3": "Third-party integrations"
     },
     "android": {
-      "title":   "Android Apps",
-      "intro":   "High-performance mobile apps for Android — native or cross-platform.",
+      "title": "Android Apps",
+      "intro": "High-performance mobile apps for Android — native or cross-platform.",
       "bullet1": "Optimized UX & smooth performance",
       "bullet2": "Push notifications & offline support",
       "bullet3": "Seamless backend integration"
     },
     "ios": {
-      "title":   "iOS Apps",
-      "intro":   "Refined iOS experiences with Apple-standard design and engineering.",
+      "title": "iOS Apps",
+      "intro": "Refined iOS experiences with Apple-standard design and engineering.",
       "bullet1": "Native Swift or cross-platform",
       "bullet2": "App Store optimization",
       "bullet3": "Full backend & API integration"
     },
     "smm": {
-      "title":   "SMM & Strategy",
-      "intro":   "Strategic digital growth and brand positioning for ambitious businesses.",
+      "title": "SMM & Strategy",
+      "intro": "Strategic digital growth and brand positioning for ambitious businesses.",
       "bullet1": "Content strategy & ad campaigns",
       "bullet2": "Visual identity system",
       "bullet3": "Analytics & continuous optimization"
@@ -75,54 +78,54 @@
   },
   "positioning": {
     "line1": "Built for ambitious founders.",
-    "line2":  "We don't just write code — we build systems."
+    "line2": "We don't just write code — we build systems."
   },
   "trust": {
     "transparent": "Transparent process",
-    "milestones":  "Structured milestones",
-    "clarity":     "Technical clarity",
-    "support":     "Long-term support"
+    "milestones": "Structured milestones",
+    "clarity": "Technical clarity",
+    "support": "Long-term support"
   },
   "process": {
     "title": "How We Work",
     "idea": {
       "title": "Discovery",
-      "desc":  "We analyze your business goals, define architecture, and map out a clear project roadmap. Every decision is backed by research."
+      "desc": "We analyze your business goals, define architecture, and map out a clear project roadmap. Every decision is backed by research."
     },
     "design": {
       "title": "Design",
-      "desc":  "We craft visual systems and user flows that balance aesthetics with function — every screen designed with intent."
+      "desc": "We craft visual systems and user flows that balance aesthetics with function — every screen designed with intent."
     },
     "development": {
       "title": "Development",
-      "desc":  "Clean code. Modular structure. Security. We build with long-term maintainability as a non-negotiable requirement."
+      "desc": "Clean code. Modular structure. Security. We build with long-term maintainability as a non-negotiable requirement."
     },
     "launch": {
       "title": "Launch",
-      "desc":  "Deployment, performance monitoring, and continuous support. We stay with you long after go-live."
+      "desc": "Deployment, performance monitoring, and continuous support. We stay with you long after go-live."
     }
   },
   "approach": {
     "title": "Our Principles",
     "innovation": {
       "title": "Innovation",
-      "body":  "We push boundaries with modern technologies — from WebGL experiences to scalable microservices. Every project is an opportunity to craft something better."
+      "body": "We push boundaries with modern technologies — from WebGL experiences to scalable microservices. Every project is an opportunity to craft something better."
     },
     "precision": {
       "title": "Engineering Precision",
-      "body":  "We architect every solution for scale, security, and long-term maintainability. Complexity is our domain; simplicity is our output."
+      "body": "We architect every solution for scale, security, and long-term maintainability. Complexity is our domain; simplicity is our output."
     },
     "partnership": {
       "title": "Long-term Partnership",
-      "body":  "We don't disappear after launch. We build lasting relationships, providing structured updates and technical clarity at every stage."
+      "body": "We don't disappear after launch. We build lasting relationships, providing structured updates and technical clarity at every stage."
     }
   },
   "team": {
-    "title":    "The Team",
+    "title": "The Team",
     "subtitle": "A professional team of engineers.",
     "diyorbek": {
-      "name":  "Jalolov Diyorbek",
-      "role":  "CEO & Professional Marketer",
+      "name": "Jalolov Diyorbek",
+      "role": "CEO & Professional Marketer",
       "specialty": "Marketing & Strategy",
       "workplace": "Dorada",
       "experience": "5+ years",
@@ -130,8 +133,8 @@
       "about": "Professional marketer and company founder. Over 5 years of experience in brand strategy, digital marketing and business growth. Currently working at Dorada."
     },
     "oybek": {
-      "name":  "Jalolov Oybek",
-      "role":  "Flutter & Android Developer",
+      "name": "Jalolov Oybek",
+      "role": "Flutter & Android Developer",
       "specialty": "Flutter & Android Native",
       "workplace": "UzAutoMotors",
       "experience": "3+ years",
@@ -139,8 +142,8 @@
       "about": "Mobile developer specializing in Flutter and Android Native technologies. Develops mobile applications at UzAutoMotors. 3+ years of experience."
     },
     "tursunjon": {
-      "name":  "Hamidov Tursunjon",
-      "role":  "Cyber Security & Full-Stack",
+      "name": "Hamidov Tursunjon",
+      "role": "Cyber Security & Full-Stack",
       "specialty": "Cyber Security",
       "workplace": "FAZO",
       "experience": "2+ years",
@@ -148,8 +151,8 @@
       "about": "Cybersecurity specialist and full-stack developer. Builds secure systems with React.js and Node.js. Experienced in bug bounty and penetration testing."
     },
     "muhammadali": {
-      "name":  "Jalilov Muhammad Ali",
-      "role":  "Consigliere",
+      "name": "Jalilov Muhammad Ali",
+      "role": "Consigliere",
       "specialty": "Consigliere — Django",
       "workplace": "FAZO",
       "experience": "2+ years",
@@ -158,14 +161,14 @@
     }
   },
   "contact": {
-    "title":     "Start a Project",
-    "name":      "Your Name",
-    "phone":     "Phone Number",
-    "service":   "Select a Service",
-    "message":   "Tell us about your project",
-    "submit":    "Send Message",
-    "success":   "Message sent! We'll reach out shortly.",
-    "error":     "Something went wrong. Please try again.",
+    "title": "Start a Project",
+    "name": "Your Name",
+    "phone": "Phone Number",
+    "service": "Select a Service",
+    "message": "Tell us about your project",
+    "submit": "Send Message",
+    "success": "Message sent! We'll reach out shortly.",
+    "error": "Something went wrong. Please try again.",
     "trustLine": "Transparent process • Structured milestones • Long-term support"
   },
   "modal": {
@@ -173,10 +176,16 @@
     "successMessage": "Message sent successfully. We will contact you shortly.",
     "close": "Close"
   },
+  "notFound": {
+    "code": "404",
+    "title": "Page not found",
+    "text": "There is nothing at these coordinates. The page may have drifted to another galaxy, or the address was mistyped.",
+    "home": "Back to home"
+  },
   "cta": {
     "headline": "Your idea deserves more than a template.",
-    "subtext":  "Architecture. Precision. Growth.",
-    "button":   "Get Started"
+    "subtext": "Architecture. Precision. Growth.",
+    "button": "Get Started"
   },
   "portfolio": {
     "label": "Portfolio",
@@ -212,19 +221,46 @@
       "description": "Automobile trading platform mobile app — browse cars, compare and submit applications.",
       "result": "Convenient car search system"
     },
-    "stat1": { "value": "6+", "label": "Completed projects" },
-    "stat2": { "value": "98%", "label": "Client satisfaction" },
-    "stat3": { "value": "10+", "label": "Long-term partners" },
-    "stat4": { "value": "3+", "label": "Years of experience" }
+    "stat1": {
+      "value": "6+",
+      "label": "Completed projects"
+    },
+    "stat2": {
+      "value": "98%",
+      "label": "Client satisfaction"
+    },
+    "stat3": {
+      "value": "10+",
+      "label": "Long-term partners"
+    },
+    "stat4": {
+      "value": "3+",
+      "label": "Years of experience"
+    }
   },
   "why": {
     "title": "Built for ambitious founders.",
     "items": [
-      { "label": "Architecture-first mindset",    "body": "Every solution starts with a structural plan, not a template." },
-      { "label": "Long-term scalability",         "body": "We build for where you're going, not just where you are." },
-      { "label": "Clean, maintainable code",      "body": "Code that future developers — and your business — will thank you for." },
-      { "label": "Transparent communication",    "body": "Structured updates and full technical clarity at every stage." },
-      { "label": "Strategic execution",           "body": "Deadlines, milestones, and delivery without hidden surprises." }
+      {
+        "label": "Architecture-first mindset",
+        "body": "Every solution starts with a structural plan, not a template."
+      },
+      {
+        "label": "Long-term scalability",
+        "body": "We build for where you're going, not just where you are."
+      },
+      {
+        "label": "Clean, maintainable code",
+        "body": "Code that future developers — and your business — will thank you for."
+      },
+      {
+        "label": "Transparent communication",
+        "body": "Structured updates and full technical clarity at every stage."
+      },
+      {
+        "label": "Strategic execution",
+        "body": "Deadlines, milestones, and delivery without hidden surprises."
+      }
     ]
   },
   "floating": {
@@ -246,10 +282,22 @@
       "title": "Transparent Partnership",
       "text": "Weekly structured updates, clear milestones, and full technical transparency — you're always informed."
     },
-    "stat1": { "value": "100%", "label": "Transparent process" },
-    "stat2": { "value": "24/7", "label": "Support available" },
-    "stat3": { "value": "2x", "label": "Faster delivery" },
-    "stat4": { "value": "0", "label": "Hidden fees" }
+    "stat1": {
+      "value": "100%",
+      "label": "Transparent process"
+    },
+    "stat2": {
+      "value": "24/7",
+      "label": "Support available"
+    },
+    "stat3": {
+      "value": "2x",
+      "label": "Faster delivery"
+    },
+    "stat4": {
+      "value": "0",
+      "label": "Hidden fees"
+    }
   },
   "gallery": {
     "label": "Gallery",

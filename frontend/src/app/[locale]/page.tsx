@@ -1,13 +1,15 @@
 import { setRequestLocale } from "next-intl/server";
 import dynamic from "next/dynamic";
+import type { ComponentType } from "react";
 import { HeroSection }       from "@/components/sections/HeroSection";
 import { ManifestoSection }  from "@/components/sections/ManifestoSection";
 import { ServicesSection }   from "@/components/sections/ServicesSection";
 import { PositioningBlock }  from "@/components/sections/PositioningBlock";
-import { WhyFazoSection }   from "@/components/sections/WhyFazoSection";
+import { WhyFazoSection }    from "@/components/sections/WhyFazoSection";
 import { ApproachSection }   from "@/components/sections/ApproachSection";
 import { TeamSection }       from "@/components/sections/TeamSection";
 import { ContactSection }    from "@/components/sections/ContactSection";
+import { getEnabledSectionKeys } from "@/lib/content/server";
 
 const TechStackSection = dynamic(
   () => import("@/components/sections/TechStackSection").then((m) => ({ default: m.TechStackSection })),
@@ -30,50 +32,38 @@ const ParallaxGallerySection = dynamic(
   { loading: () => <section className="py-20" /> }
 );
 
+// section key → component. Sections toggled/reordered from the admin panel take
+// effect here because the render list comes from Mongo (getEnabledSectionKeys).
+const COMPONENTS: Record<string, ComponentType> = {
+  hero: HeroSection,
+  manifesto: ManifestoSection,
+  services: ServicesSection,
+  floating: FloatingContentSection,
+  positioning: PositioningBlock,
+  why: WhyFazoSection,
+  portfolio: PortfolioSection,
+  techstack: TechStackSection,
+  process: ProcessSection,
+  approach: ApproachSection,
+  team: TeamSection,
+  contact: ContactSection,
+  gallery: ParallaxGallerySection,
+};
+
 type Props = { params: Promise<{ locale: string }> };
 
 export default async function HomePage({ params }: Props) {
   const { locale } = await params;
   setRequestLocale(locale);
 
+  const keys = await getEnabledSectionKeys();
+
   return (
     <>
-      {/* 1. HERO — pinned scale-down */}
-      <HeroSection />
-
-      {/* 2. MANIFESTO — pinned word reveal */}
-      <ManifestoSection />
-
-      {/* 3. XIZMATLAR — horizontal scroll */}
-      <ServicesSection />
-
-      {/* 4. FLOATING CONTENT */}
-      <FloatingContentSection />
-
-      {/* 5. POZITSIYA va NIMA UCHUN FAZO */}
-      <PositioningBlock />
-      <WhyFazoSection />
-
-      {/* 6. PORTFOLIO — horizontal scroll */}
-      <PortfolioSection />
-
-      {/* 7. PARALLAX GALEREYA */}
-      <ParallaxGallerySection />
-
-      {/* 8. TEXNOLOGIYALAR */}
-      <TechStackSection />
-
-      {/* 9. JARAYON */}
-      <ProcessSection />
-
-      {/* 10. YONDASHUV */}
-      <ApproachSection />
-
-      {/* 11. JAMOA */}
-      <TeamSection />
-
-      {/* 12. ALOQA */}
-      <ContactSection />
+      {keys.map((key) => {
+        const Section = COMPONENTS[key];
+        return Section ? <Section key={key} /> : null;
+      })}
     </>
   );
 }
